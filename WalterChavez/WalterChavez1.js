@@ -14,26 +14,24 @@ class Usuario {
 
     //CONTADOR DE MASCOTAS
     countMascotas(){
-        let mascota1 = 1
-        let mascota2 = 1
-
-        let suma = parseInt(mascota1 + mascota2);
-        console.log(`Tienes ${suma} mascotas`);
+        let contador = this.mascotas.length;
+        console.log("Usted tiene " + contador + " Mascotas");
     }
 
-    addBooks(){
-        [{nombre: 'El señor de las moscas',autor: 'William Golding'}, {nombre: 'Fundacion', autor: 'Isaac Asimov'}]
-    }
 
-    getBooks(){
-        let libro = ['El señor de las moscas' , 'Fundacion']
-        console.log(`El nombre de tus libros son ${JSON.stringify(this.libros)}`);
+    addBook(newLibro) {
+        this.libros.push(newLibro);
+        console.log(this.libros);
+        console.log(this.libros.length);// contador de libros
     }
-    
-}
+    getBookNames() {
+        this.libros.map(e => console.log('El nombre de sus libros son ' + e.nombre)) 
+    }
+};
 
-const usuario1 = new Usuario ("Walter" , "Chavez",[{nombre: 'El señor de las moscas',autor: 'William Golding'}, {nombre: 'Fundacion', autor: 'Isaac Asimov'}],["Perro" , "Gato"]);
-const usuario2 = new Usuario ("Brian" , "Zapata", [{nombre: 'Don Quijote de la Mancha',autor: 'Miguel de Cervantes'}, {nombre: 'Moby-Dick', autor: 'Herman Melville'}],["Loro" , "Hamster"]);
+
+
+const usuario1 = new Usuario ("Walter" , "Chavez",[],["Perro" , "Gato"]); //nueva clase con el objeto vacio en "Libros"
 
 
 //USUARIO 
@@ -45,12 +43,7 @@ usuario1.countMascotas();
 
 
 //LIBROS
-usuario1.addBooks();
-usuario1.getBooks();
+usuario1.addBook({nombre: 'El señor de las moscas',autor: 'William Golding'});
+usuario1.addBook({nombre: 'Fundacion', autor: 'Isaac Asimov'});
+usuario1.getBookNames();
 
-
-//USUARIO2
-
-usuario2.getFullname();
-usuario2.countMascotas();
-usuario2.getBooks();
